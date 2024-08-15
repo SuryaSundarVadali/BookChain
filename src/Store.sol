@@ -3,7 +3,7 @@ pragma solidity 0.8.4;
 
 import "./Category.sol";
 
-contract Company{
+contract Store{
     string public author_name;
     address public publisher;
     Category[] public genre_addresses;

@@ -1,38 +1,42 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./";
+import "./Store.sol";
 
-contract Flipkart{
-    string public Name;
-    address public flipkartAddress;
-    Company[] public companyAddresses;
-    string[] public companies;
+contract BookStore{
+    string public Store_Name;
+    address public Store_Address;
+    Store[] public genre_addresses;
+    string[] public stores;
+
+    error UnauthorizedAccess();
     
     constructor(){
-        Name = "Flipkart";
-        flipkartAddress = msg.sender;
+        Store_Name = "BookStore";
+        Store_Address = msg.sender;
     }
 
-    modifier onlyOwner(){
-        require(msg.sender == flipkartAddress,"Function accessible only by the owner !!");
+    modifier onlyOwner() {
+        if (msg.sender != Store_Address) {
+            revert UnauthorizedAccess();
+        }
         _;
     }
 
-    function createCompany(string memory _companyName, address _companyAddress) public onlyOwner{
-        Company company = new Company(_companyName, _companyAddress);
-        companyAddresses.push(company);
-        companies.push(_companyName);
+    function createStore(string memory _author_name, address _publisher) public onlyOwner{
+        Store store = new Store(_author_name, _publisher);
+        genre_addresses.push(store);
+        stores.push(_author_name);
     }
     
-    function allCompanyAddresses()public view returns (Company[] memory){
-        return companyAddresses;
+    function allCompanyAddresses()public view returns (Store[] memory){
+        return genre_addresses;
     }
 
     function allCompanies()public view returns (string[] memory){
-        string[] memory _data = new string[](companies.length);
-        for(uint _index=0; _index<companies.length; _index++){
-            _data[_index] = companies[_index];
+        string[] memory _data = new string[](stores.length);
+        for(uint _index=0; _index<stores.length; _index++){
+            _data[_index] = stores[_index];
         }
         return (_data);
     }
