@@ -1,0 +1,4 @@
+DeployMoodNFTTest:testConvertSVGtoURI() (gas: 26827)
+MoodNFTTest:testViewTokenURI() (gas: 338502)
+NFTTest:testCanMintandHaveABalance() (gas: 177713)
+NFTTest:testNameisCorrect() (gas: 9639)

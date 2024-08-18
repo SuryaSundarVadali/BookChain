@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+
 import "./Book.sol";
 
 contract Category {
@@ -15,7 +16,7 @@ contract Category {
     constructor(string memory _author_name, string memory _genre, address _publisher) {
         author_name = _author_name;
         genre = _genre;
-        publisher = _publisher;
+        publisher = _publisher; 
     }
 
     modifier onlyOwner() {
@@ -37,7 +38,7 @@ contract Category {
 
     function allBooks() public view returns (string[] memory) {
         string[] memory _data = new string[](books.length);
-        for (uint _index = 0; _index < books.length; _index++) {
+        for (uint256 _index = 0; _index < books.length; _index++) {
             _data[_index] = books[_index];
         }
         return _data;

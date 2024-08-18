@@ -1,0 +1,11 @@
+{
+    "name" : "TigerTheCat",
+    "description" : "Tiger is a cat",
+    "image" : "https://ipfs.io/ipfs/QmfMv8VM1usgFwopBc8Wq2XgCTwE8PZEobvk343wjoZTy9?filename=Tiger.png",
+    "attributes": [
+        {
+            "trait_type": "Sass",
+            "value": 100
+        }
+    ]
+}

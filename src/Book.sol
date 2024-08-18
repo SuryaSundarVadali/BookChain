@@ -9,10 +9,9 @@ contract Book {
     string public book_link;
     string public genre;
 
-
     /* Error */
     error UnauthorizedAccess();
-    
+
     constructor(string memory _book_name, string memory _author_name, string memory _book_link, string memory _genre) {
         book_name = _book_name;
         author_name = _author_name;
@@ -20,17 +19,10 @@ contract Book {
         genre = _genre;
     }
 
-    modifier onlyOwner {
-    if (msg.sender != publisher) {
-        revert UnauthorizedAccess();            
+    modifier onlyOwner() {
+        if (msg.sender != publisher) {
+            revert UnauthorizedAccess();
+        }
+        _;
     }
-    _;
-}
-
-    function functionName(uint256) public {
-        // function
-    }
-
-    
-
 }
